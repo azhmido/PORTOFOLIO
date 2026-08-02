@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Mido</title>
+    <style>
+      @font-face { font-family: 'Cabinet Grotesk'; src: url('/fonts/cabinet-grotesk.woff2') format('woff2'); font-weight: 100 900; font-display: swap; font-style: normal; }
+      @font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi.woff2') format('woff2'); font-weight: 300 900; font-display: swap; font-style: normal; }
+      @font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-italic.woff2') format('woff2'); font-weight: 300 900; font-display: swap; font-style: italic; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+        background: #242321;
+        color: #f1f0ed;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        text-align: center;
+        padding: 2rem;
+      }
+      .code {
+        font-family: 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
+        font-size: 120px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -4px;
+        color: #f1f0ed;
+      }
+      .divider {
+        width: 40px;
+        height: 2px;
+        background: #f1f0ed;
+        margin: 24px auto;
+      }
+      .message {
+        font-size: 14px;
+        color: #8f8d86;
+        margin-bottom: 32px;
+        letter-spacing: 0.5px;
+      }
+      .back {
+        display: inline-block;
+        padding: 10px 28px;
+        background: #f1f0ed;
+        color: #242321;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 9999px;
+        transition: opacity 0.3s ease;
+      }
+      .back:hover { opacity: 0.85; background: #c9c7c1; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="code">404</div>
+      <div class="divider"></div>
+      <p class="message">The page you're looking for doesn't exist.</p>
+      <a href="/" class="back">Back to Home</a>
+    </div>
+  </body>
+</html>

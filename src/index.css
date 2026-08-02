@@ -1,0 +1,160 @@
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-italic.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: italic;
+}
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --page-bg: #242321;
+  --page-bg-alt: #201f1d;
+  --card-bg: #2a2926;
+  --elevated-bg: #31302d;
+  --border-clr: #3b3a36;
+  --border-clr-strong: #5a5852;
+  --heading-clr: #f1f0ed;
+  --body-clr: #c9c7c1;
+  --muted-clr: #8f8d86;
+  --inverse-bg: #242321;
+  --inverse-text: #f1f0ed;
+}
+
+@theme {
+  --font-heading: 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+  --color-page: var(--page-bg);
+  --color-page-alt: var(--page-bg-alt);
+  --color-card: var(--card-bg);
+  --color-elevated: var(--elevated-bg);
+  --color-border: var(--border-clr);
+  --color-border-strong: var(--border-clr-strong);
+  --color-heading: var(--heading-clr);
+  --color-body: var(--body-clr);
+  --color-muted: var(--muted-clr);
+  --color-inverse-bg: var(--inverse-bg);
+  --color-inverse-text: var(--inverse-text);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-clr-strong) transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--page-bg);
+  color: var(--body-clr);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--heading-clr);
+  color: var(--page-bg);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-clr-strong);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--heading-clr);
+}
+
+/* Tag style for tech stack */
+.tag {
+  display: inline-block;
+  padding: 3px 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--muted-clr);
+  border: 1px solid var(--border-clr);
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.tag:hover {
+  border-color: var(--heading-clr);
+  color: var(--heading-clr);
+}
+
+/* Horizontal rule style */
+.hr-mono {
+  height: 1px;
+  background-color: var(--border-clr);
+  border: none;
+  margin: 0;
+}
+
+/* Keyboard focus ring */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--heading-clr);
+  color: var(--page-bg);
+  font-size: 14px;
+  font-family: var(--font-body);
+  text-decoration: none;
+  transition: top 0.1s;
+}
+.skip-link:focus-visible {
+  top: 0;
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--heading-clr);
+  outline-offset: 2px;
+}
+
+/* Safe area padding for notched devices */
+@supports (padding: env(safe-area-inset-top)) {
+  .nav-safe {
+    padding-top: calc(0px + env(safe-area-inset-top));
+  }
+  .footer-safe {
+    padding-bottom: calc(0px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
