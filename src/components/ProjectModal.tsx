@@ -83,7 +83,7 @@ export default function ProjectModal({ project, onClose }: Props) {
               <div className="relative h-56 sm:h-72 overflow-hidden border-b border-border">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} project preview`}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />

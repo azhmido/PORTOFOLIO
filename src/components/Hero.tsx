@@ -102,7 +102,7 @@ export default function Hero() {
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 border-2 border-inverse-text">
                 <img
                   src="/images/profile.jpg"
-                  alt={personalInfo.nickname}
+                  alt="Portrait of Ahmad Zaki Hossam Mido - full-stack developer"
                   loading="eager"
                   className="w-full h-full object-cover"
                   onError={(e) => {

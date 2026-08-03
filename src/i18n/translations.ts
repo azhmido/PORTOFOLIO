@@ -7,8 +7,6 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      role: 'Informatics Student & Full-Stack Developer',
-      tagline: 'Building performant, clean, and structured web applications with a strong algorithmic foundation.',
       viewProjects: 'View Projects',
       resume: 'Resume',
     },
@@ -20,7 +18,6 @@ export const translations = {
       title: 'Experience',
       education: 'Education',
       training: 'Training',
-      certification: 'Certification',
     },
     projects: {
       title: 'Projects',
@@ -36,6 +33,7 @@ export const translations = {
       title: 'Get in Touch',
       subtitle: "Have a project in mind or just want to say hi? Send me an email and I'll get back to you as soon as possible.",
       cta: 'Send me an email',
+      copied: 'Copied!',
     },
     footer: {
       rights: 'All rights reserved.',
@@ -50,8 +48,6 @@ export const translations = {
       contact: 'Kontak',
     },
     hero: {
-      role: 'Mahasiswa Informatika & Full-Stack Developer',
-      tagline: 'Membangun aplikasi web yang performan, bersih, dan terstruktur dengan fondasi algoritmik yang kuat.',
       viewProjects: 'Lihat Proyek',
       resume: 'Resume',
     },
@@ -63,7 +59,6 @@ export const translations = {
       title: 'Pengalaman',
       education: 'Pendidikan',
       training: 'Pelatihan',
-      certification: 'Sertifikasi',
     },
     projects: {
       title: 'Proyek',
@@ -79,6 +74,7 @@ export const translations = {
       title: 'Hubungi Saya',
       subtitle: 'Punya proyek atau hanya ingin menyapa? Kirim saya email dan saya akan kembali secepat mungkin.',
       cta: 'Kirim Email',
+      copied: 'Tersalin!',
     },
     footer: {
       rights: 'Hak cipta dilindungi.',

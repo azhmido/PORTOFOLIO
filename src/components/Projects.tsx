@@ -22,7 +22,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         {project.image ? (
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title} project screenshot`}
             loading={index < 2 ? 'eager' : 'lazy'}
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
             onError={(e) => {
