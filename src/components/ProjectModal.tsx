@@ -109,30 +109,27 @@ export default function ProjectModal({ project, onClose }: Props) {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-2">
+                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-3">
                     {t('projects.problem')}
                   </h3>
-                  <div className="w-8 h-px bg-heading mb-3" />
                   <p className="font-body text-sm text-body leading-relaxed">
                     {project.problem[lang]}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-2">
+                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-3">
                     {t('projects.approach')}
                   </h3>
-                  <div className="w-8 h-px bg-heading mb-3" />
                   <p className="font-body text-sm text-body leading-relaxed">
                     {project.approach[lang]}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-2">
+                  <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-3">
                     {t('projects.results')}
                   </h3>
-                  <div className="w-8 h-px bg-heading mb-3" />
                   <p className="font-body text-sm text-body leading-relaxed">
                     {project.results[lang]}
                   </p>

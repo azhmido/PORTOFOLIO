@@ -13,11 +13,6 @@ export interface Project {
   highlights: string[];
 }
 
-export interface StatItem {
-  label: { en: string; id: string };
-  value: { en: string; id: string };
-}
-
 export interface ExperienceItem {
   period: { en: string; id: string };
   title: { en: string; id: string };

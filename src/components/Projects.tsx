@@ -4,35 +4,36 @@ import { ArrowSquareOut } from '@phosphor-icons/react';
 import { projects } from '../data/portofolioData';
 import { GithubIcon } from './Icons';
 import { useLang } from '../context/LangContext';
+import {
+  headingVariants,
+  headingViewport,
+  cardContainerVariants,
+  cardItemVariants,
+  cardImageVariants,
+} from '../lib/motionVariants';
 const ProjectModal = lazy(() => import('./ProjectModal'));
-
-const ease = [0.16, 1, 0.3, 1] as const;
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   const { t, lang } = useLang();
   return (
     <motion.div
       className="group border border-border bg-card transition-all duration-500 hover:border-heading cursor-pointer"
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease }}
+      variants={cardItemVariants}
     >
       <div className="relative h-52 overflow-hidden border-b border-border">
         {project.image ? (
-          <img
+          <motion.img
             src={project.image}
             alt={`${project.title} project screenshot`}
             loading={index < 2 ? 'eager' : 'lazy'}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            variants={cardImageVariants}
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';
             }}
           />
         ) : (
-          <div className="w-full h-full bg-elevated flex items-center justify-center">
-            <span className="font-heading text-6xl font-bold text-border">M</span>
-          </div>
+          <div className="w-full h-full bg-elevated" />
         )}
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
         <div className="absolute top-3 right-3 flex gap-2">
@@ -92,25 +93,30 @@ export default function Projects() {
   return (
     <section id="projects" role="region" aria-label="Projects" className="py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-                <motion.div
+        <motion.div
           className="mb-12"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          variants={headingVariants}
+          initial="initial"
+          whileInView="inView"
+          viewport={headingViewport}
         >
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-heading">
             {t('projects.title')}
           </h2>
-          <div className="w-12 h-px bg-heading mt-4" />
         </motion.div>
-<div className="grid md:grid-cols-2 gap-8">
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {projects.map((project, index) => (
             <div key={index} onClick={() => setSelected(project)}>
               <ProjectCard project={project} index={index} />
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
       <Suspense fallback={null}>
         <ProjectModal project={selected} onClose={() => setSelected(null)} />

@@ -1,4 +1,4 @@
-﻿import type { Project, StatItem, ExperienceItem, TechCategory } from '../types';
+﻿import type { Project, ExperienceItem, TechCategory } from '../types';
 
 export const projects: Project[] = [
   {
@@ -95,13 +95,6 @@ export const projects: Project[] = [
     },
     highlights: ["Monorepo architecture", "JWT authentication", "Xendit payment", "PostgreSQL"],
   },
-];
-
-export const stats: StatItem[] = [
-  { label: { en: "Projects Built", id: "Proyek Dibangun" }, value: { en: "4", id: "4" } },
-  { label: { en: "Technologies", id: "Teknologi" }, value: { en: "15+", id: "15+" } },
-  { label: { en: "Experience", id: "Pengalaman" }, value: { en: "2 Years", id: "2 Tahun" } },
-  { label: { en: "Certifications", id: "Sertifikasi" }, value: { en: "5+", id: "5+" } },
 ];
 
 export const experiences: ExperienceItem[] = [

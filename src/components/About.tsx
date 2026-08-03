@@ -1,39 +1,17 @@
 import { motion } from 'motion/react';
-import { personalInfo, stats } from '../data/portofolioData';
+import { personalInfo } from '../data/portofolioData';
 import { useLang } from '../context/LangContext';
-
-const ease = [0.16, 1, 0.3, 1] as const;
-
-function StatRow() {
-  const { lang } = useLang();
-  return (
-    <motion.div
-      className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border mt-16"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease }}
-    >
-      {stats.map((stat) => (
-        <div key={stat.label.en} className="bg-page p-6 text-center md:text-left">
-          <p className="font-heading text-3xl font-bold text-heading">{stat.value[lang]}</p>
-          <p className="font-body text-xs tracking-wider uppercase text-muted mt-1">{stat.label[lang]}</p>
-        </div>
-      ))}
-    </motion.div>
-  );
-}
+import {
+  headingVariants,
+  headingViewport,
+  fadeVariants,
+  bodyViewport,
+} from '../lib/motionVariants';
 
 function TechCloud() {
   const { t, lang } = useLang();
   return (
-    <motion.div
-      className="mt-10"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: 0.2, ease }}
-    >
+    <div className="mt-10">
       <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-heading mb-4">
         {t('about.techTitle')}
       </h3>
@@ -54,7 +32,7 @@ function TechCloud() {
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -65,38 +43,36 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div
           className="mb-12"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          variants={headingVariants}
+          initial="initial"
+          whileInView="inView"
+          viewport={headingViewport}
         >
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-heading">
             {t('about.title')}
           </h2>
-          <div className="w-12 h-px bg-heading mt-4" />
         </motion.div>
         <div className="max-w-3xl space-y-5">
           <motion.p
             className="text-body text-base leading-relaxed"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease }}
+            variants={fadeVariants}
+            initial="initial"
+            whileInView="inView"
+            viewport={bodyViewport}
           >
             {personalInfo.about[0][lang]}
           </motion.p>
           <motion.p
             className="text-body text-base leading-relaxed"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
+            variants={fadeVariants}
+            initial="initial"
+            whileInView="inView"
+            viewport={bodyViewport}
           >
             {personalInfo.about[1][lang]}
           </motion.p>
         </div>
         <TechCloud />
-        <StatRow />
       </div>
     </section>
   );

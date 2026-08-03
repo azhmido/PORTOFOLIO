@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, FileText } from '@phosphor-icons/react';
 import { personalInfo } from '../data/portofolioData';
@@ -20,6 +21,7 @@ const itemVariants = {
 
 export default function Hero() {
   const { t, lang } = useLang();
+  const [loaded, setLoaded] = useState(false);
   return (
     <section className="relative min-h-[100dvh] flex items-center pt-24 pb-16 overflow-hidden bg-inverse-bg text-inverse-text">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -95,22 +97,24 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease }}
           >
-            <div className="relative">
-              <span className="absolute -top-16 -right-10 font-heading text-[220px] font-black text-inverse-text/5 select-none leading-none pointer-events-none hidden lg:block">
-                M
-              </span>
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 border-2 border-inverse-text">
+            <div
+              className={`relative transition-opacity duration-700 ${
+                loaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <div className="relative w-56 h-56 sm:w-64 sm:h-64 border-2 border-inverse-text bg-inverse-text/10">
                 <img
                   src="/images/profile.jpg"
                   alt="Portrait of Ahmad Zaki Hossam Mido - full-stack developer"
                   loading="eager"
-                  className="w-full h-full object-cover"
+                  onLoad={() => setLoaded(true)}
                   onError={(e) => {
                     (e.target as HTMLImageElement).style.display = 'none';
+                    setLoaded(true);
                   }}
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -inset-4 border-2 border-inverse-text -z-10" />
             </div>
           </motion.div>
         </div>
