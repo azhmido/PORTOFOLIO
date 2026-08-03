@@ -166,7 +166,7 @@ export const experiences: ExperienceItem[] = [
     type: "training",
   },
   {
-    period: { en: "Jan - Apr 2026", id: "Jan - Apr 2026" },
+    period: { en: "Jan - Jun 2026", id: "Jan - Jun 2026" },
     title: { en: "React Advanced", id: "React Lanjutan" },
     org: { en: "PUB Training", id: "Pelatihan PUB" },
     description: {
@@ -191,8 +191,8 @@ export const personalInfo = {
   name: "Ahmad Zaki Hossam Mido",
   nickname: "Mido",
   role: {
-    en: "Full-Stack Developer — Java Spring Boot & React.js Enthusiast",
-    id: "Full-Stack Developer — Ahli Java Spring Boot & React.js",
+    en: "Full-Stack Developer · Java Spring Boot & React.js Enthusiast",
+    id: "Full-Stack Developer · Antusias Java Spring Boot & React.js",
   },
   tagline: {
     en: "Building performant, clean, and structured web applications with a strong algorithmic foundation.",
@@ -213,7 +213,7 @@ export const personalInfo = {
     { category: { en: "Frontend", id: "Frontend" }, items: ["React", "Tailwind CSS"] },
     { category: { en: "Backend", id: "Backend" }, items: ["Express.js", "Node.js"] },
     { category: { en: "Database", id: "Database" }, items: ["PostgreSQL", "MySQL", "Supabase"] },
-    { category: { en: "DevOps & Tools", id: "DevOps & Tools" }, items: ["Git", "GitHub", "Docker", "Postman", "npm", "pnpm", "Vercel", "XAMPP"] },
+    { category: { en: "DevOps & Tools", id: "DevOps & Tools" }, items: ["Git", "GitHub", "Docker", "Postman", "Vercel"] },
     { category: { en: "APIs & Payments", id: "API & Pembayaran" }, items: ["Xendit API"] },
   ] as TechCategory[],
   contact: {

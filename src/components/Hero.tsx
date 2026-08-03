@@ -31,7 +31,7 @@ export default function Hero() {
             animate="animate"
           >
             <motion.h1
-              className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[0.9] tracking-tight text-inverse-text"
+              className="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[0.9] tracking-tight text-inverse-text"
               variants={itemVariants}
             >
               {personalInfo.name.split(' ').map((word, i) => (

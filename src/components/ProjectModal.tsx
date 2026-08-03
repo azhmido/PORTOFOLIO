@@ -63,7 +63,7 @@ export default function ProjectModal({ project, onClose }: Props) {
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-label={project.title}
+            aria-labelledby="project-modal-title"
             className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-page border border-border"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -92,7 +92,7 @@ export default function ProjectModal({ project, onClose }: Props) {
 
             <div className="p-6 sm:p-8 space-y-8">
               <div>
-                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-heading">
+                <h2 id="project-modal-title" className="font-heading text-2xl sm:text-3xl font-bold text-heading">
                   {project.title}
                 </h2>
                 <p className="font-body text-sm text-body leading-relaxed mt-3">

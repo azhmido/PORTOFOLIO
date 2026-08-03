@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { EnvelopeSimple } from '@phosphor-icons/react';
+import { EnvelopeSimple, Check } from '@phosphor-icons/react';
 import { personalInfo } from '../data/portofolioData';
 import { useLang } from '../context/LangContext';
 
@@ -7,6 +8,17 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Contact() {
   const { t } = useLang();
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.contact.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
   return (
     <section id="contact" role="region" aria-label="Contact" className="py-24 md:py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
@@ -46,6 +58,21 @@ export default function Contact() {
             <EnvelopeSimple className="w-4 h-4" weight="bold" />
             {t('contact.cta')}
           </a>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-heading transition-colors"
+            aria-label={`Copy email ${personalInfo.contact.email}`}
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5" weight="bold" />
+                {t('contact.copied')}
+              </>
+            ) : (
+              <span>{personalInfo.contact.email}</span>
+            )}
+          </button>
         </motion.div>
       </div>
     </section>
