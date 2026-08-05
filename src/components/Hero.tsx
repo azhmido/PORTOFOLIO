@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, FileText } from '@phosphor-icons/react';
+import { ArrowRight, FileText, CaretDown } from '@phosphor-icons/react';
 import { personalInfo } from '../data/portofolioData';
 import { useLang } from '../context/LangContext';
 
@@ -19,9 +19,40 @@ const itemVariants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
 };
 
+const resumeOptions = [
+  {
+    key: 'resumeIndonesian',
+    href: '/resume_ahmad_zaki_hossam_mido.pdf',
+  },
+  {
+    key: 'resumeEnglish',
+    href: '/resume_ahmad_zaki_hossam_mido_en.pdf',
+  },
+] as const;
+
 export default function Hero() {
   const { t, lang } = useLang();
   const [loaded, setLoaded] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const resumeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!resumeOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (resumeRef.current && !resumeRef.current.contains(e.target as Node)) {
+        setResumeOpen(false);
+      }
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setResumeOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [resumeOpen]);
   return (
     <section className="relative min-h-[100dvh] flex items-center pt-24 pb-16 overflow-hidden bg-inverse-bg text-inverse-text">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -79,15 +110,43 @@ export default function Hero() {
                 />
               </a>
 
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-inverse-text/40 text-inverse-text text-sm font-medium tracking-wide rounded-full transition-all duration-300 hover:border-inverse-text active:scale-[0.98]"
-              >
-                <FileText className="w-3.5 h-3.5" weight="bold" />
-                {t('hero.resume')}
-              </a>
+              <div className="relative" ref={resumeRef}>
+                <button
+                  type="button"
+                  onClick={() => setResumeOpen(prev => !prev)}
+                  aria-haspopup="menu"
+                  aria-expanded={resumeOpen}
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-inverse-text/40 text-inverse-text text-sm font-medium tracking-wide rounded-full transition-all duration-300 hover:border-inverse-text active:scale-[0.98]"
+                >
+                  <FileText className="w-3.5 h-3.5" weight="bold" />
+                  {t('hero.resume')}
+                  <CaretDown
+                    className={`w-3.5 h-3.5 transition-transform ${resumeOpen ? 'rotate-180' : ''}`}
+                    weight="bold"
+                  />
+                </button>
+
+                {resumeOpen && (
+                  <div
+                    role="menu"
+                    className="absolute left-0 mt-3 w-64 bg-inverse-text text-inverse-bg rounded-xl shadow-2xl overflow-hidden z-20 divide-y divide-inverse-bg/10"
+                  >
+                    {resumeOptions.map(option => (
+                      <a
+                        key={option.key}
+                        href={option.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setResumeOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm font-medium tracking-wide transition-colors hover:bg-inverse-bg/10"
+                      >
+                        <FileText className="w-4 h-4 shrink-0" weight="bold" />
+                        {t(`hero.${option.key}`)}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </motion.div>
           </motion.div>
 

@@ -9,6 +9,8 @@ export const translations = {
     hero: {
       viewProjects: 'View Projects',
       resume: 'Resume',
+      resumeIndonesian: 'Resume (Bahasa Indonesia)',
+      resumeEnglish: 'Resume (English)',
     },
     about: {
       title: 'About Me',
@@ -49,6 +51,8 @@ export const translations = {
     hero: {
       viewProjects: 'Lihat Proyek',
       resume: 'Resume',
+      resumeIndonesian: 'Resume (Bahasa Indonesia)',
+      resumeEnglish: 'Resume (English)',
     },
     about: {
       title: 'Tentang Saya',
