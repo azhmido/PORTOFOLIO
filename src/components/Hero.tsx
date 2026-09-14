@@ -21,12 +21,12 @@ const itemVariants = {
 
 const resumeOptions = [
   {
-    key: 'resumeIndonesian',
-    href: '/resume_ahmad_zaki_hossam_mido.pdf',
+    key: 'resumeFullstack',
+    href: '/Ahmad-Zaki-Hossam-Mido_Full-Stack-Developer_CV.pdf',
   },
   {
-    key: 'resumeEnglish',
-    href: '/resume_ahmad_zaki_hossam_mido_en.pdf',
+    key: 'resumeBackend',
+    href: '/Ahmad-Zaki-Hossam-Mido_Backend-Developer_CV.pdf',
   },
 ] as const;
 
@@ -35,6 +35,13 @@ export default function Hero() {
   const [loaded, setLoaded] = useState(false);
   const [resumeOpen, setResumeOpen] = useState(false);
   const resumeRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setLoaded(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!resumeOpen) return;
@@ -68,7 +75,7 @@ export default function Hero() {
               variants={itemVariants}
             >
               {personalInfo.name.split(' ').map((word, i) => (
-                <span key={word}>
+                <span key={`${word}-${i}`}>
                   <motion.span
                     className="inline-block"
                     initial={{ opacity: 0, y: 24 }}
@@ -163,6 +170,7 @@ export default function Hero() {
             >
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 border-2 border-inverse-text bg-inverse-text/10">
                 <img
+                  ref={imgRef}
                   src="/images/profile.jpg"
                   alt="Portrait of Ahmad Zaki Hossam Mido - full-stack developer"
                   loading="eager"

@@ -147,6 +147,17 @@ export default function ProjectModal({ project, onClose }: Props) {
                 ))}
               </div>
 
+              {project.title === 'CatatCuan' && (
+                <div className="p-4 bg-card border border-border text-xs space-y-1.5">
+                  <p className="font-mono font-bold text-heading text-[11px] uppercase tracking-wider">
+                    {t('projects.demoCredentials')}
+                  </p>
+                  <p className="text-body font-mono text-[11px]">
+                    Email: <span className="text-heading font-medium">demo@catatcuan.id</span> &nbsp;|&nbsp; Password: <span className="text-heading font-medium">password123</span>
+                  </p>
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-3 pt-2 border-t border-border">
                 <a
                   href={project.githubUrl}

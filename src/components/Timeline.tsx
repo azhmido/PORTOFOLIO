@@ -1,43 +1,65 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { experiences } from '../data/portofolioData';
 import { useLang } from '../context/LangContext';
 import { headingVariants, headingViewport } from '../lib/motionVariants';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-function TimelineItem({ item, index }: { item: typeof experiences[0]; index: number }) {
+type FilterType = 'all' | 'experience' | 'education' | 'training';
+
+function TimelineItem({
+  item,
+  index,
+  total,
+}: {
+  item: typeof experiences[0];
+  index: number;
+  total: number;
+}) {
   const { t, lang } = useLang();
   const isEducation = item.type === 'education';
+  const isExperience = item.type === 'experience';
+
   return (
     <motion.div
+      layout
       className="relative flex gap-6 sm:gap-10"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, delay: index * 0.12, ease }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4, delay: (index % 6) * 0.08, ease }}
     >
-      <div className="hidden sm:block w-24 shrink-0 pt-0.5">
+      <div className="hidden sm:block w-28 shrink-0 pt-0.5">
         <p className="font-mono text-xs text-muted tracking-tight">{item.period[lang]}</p>
       </div>
 
       <div className="relative flex flex-col items-center shrink-0">
         <div
           className={`w-2.5 h-2.5 rounded-full ring-2 ring-page ${
-            isEducation ? 'bg-heading' : 'bg-page border-2 border-heading/60'
+            isEducation
+              ? 'bg-heading'
+              : isExperience
+              ? 'bg-heading ring-heading/30'
+              : 'bg-page border-2 border-heading/60'
           }`}
         />
-        {index < experiences.length - 1 && (
+        {index < total - 1 && (
           <div className="w-px flex-1 bg-border mt-1" />
         )}
       </div>
 
-      <div className="pb-12 sm:pb-14 pt-0.5">
+      <div className="pb-10 sm:pb-12 pt-0.5">
         <span className="sm:hidden font-mono text-[10px] uppercase tracking-wider text-muted block mb-1">
           {item.period[lang]}
         </span>
         <span
           className={`inline-block font-mono text-[9px] uppercase tracking-[0.15em] px-2 py-0.5 mb-2 border ${
-            isEducation ? 'border-heading text-heading' : 'border-border text-muted'
+            isEducation
+              ? 'border-heading text-heading'
+              : isExperience
+              ? 'border-heading text-heading bg-heading/10'
+              : 'border-border text-muted'
           }`}
         >
           {t('timeline.' + item.type)}
@@ -58,11 +80,19 @@ function TimelineItem({ item, index }: { item: typeof experiences[0]; index: num
 
 export default function Timeline() {
   const { t } = useLang();
+  const [filter, setFilter] = useState<FilterType>('all');
+
+  const filterOptions: FilterType[] = ['all', 'experience', 'education', 'training'];
+
+  const filteredItems = filter === 'all'
+    ? experiences
+    : experiences.filter((item) => item.type === filter);
+
   return (
-    <section id="experience" role="region" aria-label="Experience" className="py-24 md:py-32 bg-page-alt">
+    <section id="experience" role="region" aria-label="Experience & Education" className="py-24 md:py-32 bg-page-alt">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <motion.div
-          className="mb-12 ml-0 sm:ml-[7.5rem]"
+          className="mb-8 ml-0 sm:ml-[8.5rem]"
           variants={headingVariants}
           initial="initial"
           whileInView="inView"
@@ -72,10 +102,38 @@ export default function Timeline() {
             {t('timeline.title')}
           </h2>
         </motion.div>
-        <div className="ml-0 sm:ml-[7.5rem]">
-          {experiences.map((item, index) => (
-            <TimelineItem key={index} item={item} index={index} />
+
+        {/* Filter Tabs */}
+        <div className="ml-0 sm:ml-[8.5rem] mb-10 flex flex-wrap gap-2">
+          {filterOptions.map((opt) => (
+            <button
+              key={opt}
+              type="button"
+              onClick={() => setFilter(opt)}
+              className={`px-3 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-wider transition-all duration-200 border ${
+                filter === opt
+                  ? 'bg-heading text-page border-heading font-medium'
+                  : 'text-muted border-border hover:border-heading hover:text-heading bg-card'
+              }`}
+            >
+              {t(`timeline.${opt}`)}
+            </button>
           ))}
+        </div>
+
+        <div className="ml-0 sm:ml-[8.5rem]">
+          <AnimatePresence mode="wait">
+            <motion.div key={filter}>
+              {filteredItems.map((item, index) => (
+                <TimelineItem
+                  key={`${item.period.en}-${item.title.en}`}
+                  item={item}
+                  index={index}
+                  total={filteredItems.length}
+                />
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

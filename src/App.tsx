@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, MotionConfig } from 'motion/react';
 import { LangProvider } from './context/LangContext';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -11,6 +12,18 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 
 export default function App() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const timer = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'auto' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   return (
     <MotionConfig reducedMotion="user">
       <ErrorBoundary>

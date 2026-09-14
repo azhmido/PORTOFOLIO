@@ -18,7 +18,7 @@ export interface ExperienceItem {
   title: { en: string; id: string };
   org: { en: string; id: string };
   description: { en: string; id: string };
-  type: 'education' | 'training' | 'certification';
+  type: 'education' | 'experience' | 'training';
 }
 
 export interface TechCategory {

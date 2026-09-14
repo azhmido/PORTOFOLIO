@@ -21,6 +21,12 @@ export default function Navbar() {
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, 'change', () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+    }
     for (const id of navLinks.map(l => l.href.slice(1)).reverse()) {
       const el = document.getElementById(id);
       if (el && el.getBoundingClientRect().top <= 200) {

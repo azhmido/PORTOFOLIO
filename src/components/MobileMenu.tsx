@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { List, X } from '@phosphor-icons/react';
 import { personalInfo } from '../data/portofolioData';
@@ -13,6 +14,20 @@ interface Props {
 
 export default function MobileMenu({ isOpen, onToggle, onLinkClick }: Props) {
   const { t } = useLang();
+
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onToggle();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [isOpen, onToggle]);
+
   const navLinks = [
     { href: '#about', label: t('nav.about') },
     { href: '#experience', label: t('nav.experience') },
@@ -42,6 +57,9 @@ export default function MobileMenu({ isOpen, onToggle, onLinkClick }: Props) {
               onClick={onLinkClick}
             />
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile Navigation"
               className="fixed top-0 right-0 z-50 h-full w-72 bg-page border-l border-border md:hidden flex flex-col"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}

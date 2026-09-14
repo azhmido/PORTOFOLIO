@@ -2,8 +2,8 @@ import type { Variants } from 'motion/react';
 
 export const EASE = [0.16, 1, 0.3, 1] as const;
 
-export const headingViewport = { once: true, amount: 0.4 } as const;
-export const bodyViewport = { once: true, amount: 0.3 } as const;
+export const headingViewport = { once: true, amount: 0.1, margin: '0px 0px -20px 0px' } as const;
+export const bodyViewport = { once: true, amount: 0.1, margin: '0px 0px -20px 0px' } as const;
 
 // Consistent, quiet reveal for section headings (a system, not boilerplate).
 export const headingVariants: Variants = {
