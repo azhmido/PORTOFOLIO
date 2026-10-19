@@ -31,6 +31,7 @@ export default function MobileMenu({ isOpen, onToggle, onLinkClick }: Props) {
   const navLinks = [
     { href: '#about', label: t('nav.about') },
     { href: '#experience', label: t('nav.experience') },
+    { href: '#certificates', label: t('nav.certificates') },
     { href: '#projects', label: t('nav.projects') },
     { href: '#contact', label: t('nav.contact') },
   ];

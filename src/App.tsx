@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Timeline from './components/Timeline';
+import Certificates from './components/Certificates';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -41,6 +42,7 @@ export default function App() {
               <Hero />
               <About />
               <Timeline />
+              <Certificates />
               <Projects />
               <Contact />
             </motion.main>

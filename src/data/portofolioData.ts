@@ -1,4 +1,4 @@
-import type { Project, ExperienceItem, TechCategory } from '../types';
+import type { Project, ExperienceItem, TechCategory, Certificate } from '../types';
 
 export const projects: Project[] = [
   {
@@ -332,3 +332,222 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/azhmido/",
   },
 };
+
+export const certificates: Certificate[] = [
+  {
+    id: "fullstack-web",
+    title: {
+      en: "Intensive Full-Stack Web Development Training (React & Java)",
+      id: "Pelatihan Intensif Full-Stack Web Development (React & Java)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "September 17, 2026",
+      id: "17 September 2026",
+    },
+    grade: "97.1",
+    sessions: {
+      en: "11 structured sessions · 120 mins/session",
+      id: "11 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "fullstack",
+    image: "/images/certificates/cert-fullstack.jpeg",
+    skills: ["Java Spring Boot", "React", "Full-Stack Architecture", "REST API", "PostgreSQL", "Docker"],
+    description: {
+      en: "Comprehensive full-stack engineering combining modern React on the frontend and Java Spring Boot backend, achieving top distinction with a 97.1 final score.",
+      id: "Pelatihan rekayasa full-stack komprehensif memadukan frontend React modern dan backend Java Spring Boot dengan capaian prestasi tertinggi, nilai akhir 97,1.",
+    },
+  },
+  {
+    id: "advanced-frontend-react",
+    title: {
+      en: "Intensive Advanced Front-End Programming Training (React)",
+      id: "Pelatihan Intensif Pemrograman Front-End Lanjutan (React)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "July 2, 2026",
+      id: "2 Juli 2026",
+    },
+    grade: "89",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "frontend",
+    image: "/images/certificates/cert-advanced-react.jpeg",
+    skills: ["React", "Custom Hooks", "Performance Optimization", "Polyrepo Architecture", "State Management"],
+    description: {
+      en: "Deep dive into production-grade React patterns, custom hooks, performance tuning, and polyrepo architecture, concluding with the ExternaWear capstone project.",
+      id: "Pendalaman pola arsitektur React tingkat lanjut, custom hooks, optimasi performa, dan arsitektur polyrepo dengan proyek akhir ExternaWear.",
+    },
+  },
+  {
+    id: "git-github",
+    title: {
+      en: "Intensive Git & GitHub Training",
+      id: "Pelatihan Intensif Git & GitHub",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "January 22, 2026",
+      id: "22 Januari 2026",
+    },
+    grade: "89",
+    sessions: {
+      en: "4 structured sessions · 120 mins/session",
+      id: "4 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "tools",
+    image: "/images/certificates/cert-git-github.jpeg",
+    skills: ["Git", "GitHub", "Branching Strategies", "Merge Conflict Resolution", "Pull Requests", "Agile Collaboration"],
+    description: {
+      en: "Version control mastery covering branching workflows, merge conflict resolution, pull request management, and collaborative team engineering.",
+      id: "Penguasaan kontrol versi mencakup alur branching, resolusi merge conflict, manajemen pull request, dan kolaborasi tim profesional.",
+    },
+  },
+  {
+    id: "fundamental-frontend-react",
+    title: {
+      en: "Intensive Fundamental Front-End Programming Training (React)",
+      id: "Pelatihan Intensif Pemrograman Front-End Dasar (React)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "January 1, 2026",
+      id: "1 Januari 2026",
+    },
+    grade: "84",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "frontend",
+    image: "/images/certificates/cert-react-fundamental.jpeg",
+    skills: ["React", "JSX", "Functional Components", "React Router", "Context API", "localStorage"],
+    description: {
+      en: "Mastery of fundamental React concepts, component lifecycle, state management, client routing, and persistence, culminating in the Stokura inventory system.",
+      id: "Penguasaan konsep dasar React, siklus komponen, manajemen state, client routing, dan persistensi data dengan proyek akhir sistem inventaris Stokura.",
+    },
+  },
+  {
+    id: "web-programming",
+    title: {
+      en: "Intensive Web Programming Training (HTML, CSS, JavaScript)",
+      id: "Pelatihan Intensif Pemrograman Web (HTML, CSS, JavaScript)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "August 14, 2025",
+      id: "14 Agustus 2025",
+    },
+    grade: "82",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "frontend",
+    image: "/images/certificates/cert-web-programming.jpeg",
+    skills: ["HTML5", "CSS3", "Vanilla JavaScript", "DOM Manipulation", "Async/Fetch API", "Responsive Design"],
+    description: {
+      en: "Thorough grounding in vanilla web development, DOM manipulation, responsive layouts, and asynchronous REST API integration without third-party frameworks.",
+      id: "Fondasi mendalam pengembangan web vanilla, manipulasi DOM, layout responsif, dan integrasi asynchronous REST API tanpa framework pihak ketiga.",
+    },
+  },
+  {
+    id: "database-training",
+    title: {
+      en: "Intensive Database Training",
+      id: "Pelatihan Intensif Basis Data (Database)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "May 29, 2025",
+      id: "29 Mei 2025",
+    },
+    grade: "79",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "database",
+    image: "/images/certificates/cert-database.jpeg",
+    skills: ["MySQL", "Relational Database Design", "SQL DDL/DML", "Data Normalization", "ERD Modeling"],
+    description: {
+      en: "Relational database schema modeling, entity relationships, SQL query optimization, normalization forms, and transaction integrity with MySQL.",
+      id: "Pemodelan skema basis data relasional, relasi entitas, optimasi kueri SQL, normalisasi data, dan integritas transaksi dengan MySQL.",
+    },
+  },
+  {
+    id: "data-structure",
+    title: {
+      en: "Intensive Data Structure Training",
+      id: "Pelatihan Intensif Struktur Data",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "May 29, 2025",
+      id: "29 Mei 2025",
+    },
+    grade: "71",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "core",
+    image: "/images/certificates/cert-data-structure.jpeg",
+    skills: ["C Language", "Linked Lists", "Stacks & Queues", "Binary Trees", "Memory Management", "Algorithms"],
+    description: {
+      en: "Core computer science data structures implemented in pure C, including singly/doubly linked lists, stacks, queues, trees, and manual memory pointers.",
+      id: "Implementasi struktur data fundamental ilmu komputer menggunakan bahasa C murni: linked list, stack, queue, binary tree, dan alokasi memori dinamis.",
+    },
+  },
+  {
+    id: "logic-and-algorithm",
+    title: {
+      en: "Intensive Logic and Algorithm Training (C Language)",
+      id: "Pelatihan Intensif Logika & Algoritma Pemrograman (Bahasa C)",
+    },
+    issuer: {
+      en: "PUB Programming Training Center · PASIM National University",
+      id: "PUB Programming Training Center · Universitas Nasional PASIM",
+    },
+    date: {
+      en: "January 23, 2025",
+      id: "23 Januari 2025",
+    },
+    grade: "76",
+    sessions: {
+      en: "16 structured sessions · 120 mins/session",
+      id: "16 sesi terstruktur · 120 menit/sesi",
+    },
+    category: "core",
+    image: "/images/certificates/cert-logic-algorithm.jpeg",
+    skills: ["C Language", "Algorithmic Thinking", "Pointer Arithmetic", "Control Flow", "Console Application"],
+    description: {
+      en: "Foundational problem-solving and algorithmic thinking in pure C, control structures, pointer arithmetic, and final console application Dutch Villa.",
+      id: "Fondasi logika pemecahan masalah dan pemikiran algoritmik menggunakan bahasa C murni, struktur kontrol, aritmatika pointer, dan proyek akhir Dutch Villa.",
+    },
+  },
+];

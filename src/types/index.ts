@@ -25,3 +25,18 @@ export interface TechCategory {
   category: { en: string; id: string };
   items: string[];
 }
+
+export type CertificateCategory = 'all' | 'fullstack' | 'frontend' | 'core' | 'database' | 'tools';
+
+export interface Certificate {
+  id: string;
+  title: { en: string; id: string };
+  issuer: { en: string; id: string };
+  date: { en: string; id: string };
+  grade: string;
+  sessions: { en: string; id: string };
+  category: 'fullstack' | 'frontend' | 'core' | 'database' | 'tools';
+  image: string;
+  skills: string[];
+  description: { en: string; id: string };
+}
